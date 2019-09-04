@@ -5,7 +5,7 @@
 function bubbleSort(array) {
   let arrLength = 0;
   let swapCount = 0;
-  while (swapCount < array.length * 2 - 1) {
+  for (let j = 0; j < array.length - 1; j++) {
     console.log(`#${arrLength}, ${array}`);
     arrLength++;
     for (let i = 0; i < array.length - 1; i++) {
