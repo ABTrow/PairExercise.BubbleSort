@@ -1,4 +1,6 @@
 {
   "framework": "jasmine2",
-  "src_files": ["bubblesort.js", "bubblesort.spec.js"]
+  "src_files": ["mergesort.js", "mergesort.spec.js"]
 }
+
+
