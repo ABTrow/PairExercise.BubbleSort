@@ -26,4 +26,18 @@ describe('MergeSort Function', function(){
   function() {
     expect(mergeSort([12,4,1,2])).toEqual([1, 2, 4, 12]);
   });
+
+  function testFunction (a, b) {
+    if (a > b) {
+      return -1;
+    } else if (a < b) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  it('takes a comparator function', function() {
+    expect(mergeSort([30, 4, 11, 18, 3], testFunction)).toEqual([30,18,11,4,3]);
+  });
 });

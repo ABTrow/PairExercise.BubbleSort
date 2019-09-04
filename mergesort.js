@@ -9,12 +9,22 @@ function split(wholeArray) {
   return [firstHalf, secondHalf];
 }
 
-function merge(arr1, arr2) {
+function defaultSearch (a, b) {
+  if (a < b) {
+    return -1;
+  } else if (a > b) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+function merge(arr1, arr2, func = defaultSearch) {
   let solution = [];
   let index1 = 0;
   let index2 = 0;
   while (index1 < arr1.length && index2 < arr2.length) {
-    if (arr1[index1] < arr2[index2]) {
+    if (func(arr1[index1], arr2[index2]) < 0) {
       solution.push(arr1[index1]);
       index1++;
     } else {
@@ -31,23 +41,21 @@ function merge(arr1, arr2) {
   return solution;
 };
 
-function mergeSort(array) {
+function mergeSort(array, func) {
   console.log('merge sorting: ', array);
   if (array.length === 1) {
     console.log('exit condition!');
     return array;
   } else {
-    const separated = split(array);
-    const firstHalf = separated[0];
-    const secondHalf = separated[1];
+    let [firstHalf, secondHalf] = split(array);
     console.log('unsorted first half:', firstHalf, 'unsorted second half:', secondHalf);
 
-    let sortedFirstHalf = mergeSort(firstHalf);
-    console.log('in between halves:', firstHalf, secondHalf);
-    let sortedSecondHalf = mergeSort(secondHalf);
+    let sortedFirstHalf = mergeSort(firstHalf, func);
+    console.log('in between halves:', sortedFirstHalf, secondHalf);
+    let sortedSecondHalf = mergeSort(secondHalf, func);
     console.log('sorted first half:', sortedFirstHalf, 'sorted second half:', sortedSecondHalf);
 
-    let merged = merge(sortedFirstHalf, sortedSecondHalf);
+    let merged = merge(sortedFirstHalf, sortedSecondHalf, func);
     console.log('merged:', merged);
     return merged;
   }
