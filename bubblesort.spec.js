@@ -9,7 +9,7 @@ describe("Bubble Sort", function() {
     expect(bubbleSort([1])).toEqual([1]);
   });
   it("handles multiple items", function() {
-    expect(bubbleSort([8, 3, 2, 6, 4, 9, 1, 7, 5])).toEqual([
+    expect(bubbleSort([8, 3, 2, 6, 4, 1, 7, 5])).toEqual([
       1,
       2,
       3,
@@ -17,8 +17,7 @@ describe("Bubble Sort", function() {
       5,
       6,
       7,
-      8,
-      9
+      8
     ]);
   });
   it("calls on the swap function ", function() {

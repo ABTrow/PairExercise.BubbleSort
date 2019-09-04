@@ -3,17 +3,27 @@
 //for 8 numbers, go through
 
 function bubbleSort(array) {
-  let arrLength = 0;
+  let passCount = 1;
   let swapCount = 0;
+
+  let swapped = true;
+
   for (let j = 0; j < array.length - 1; j++) {
-    console.log(`#${arrLength}, ${array}`);
-    arrLength++;
-    for (let i = 0; i < array.length - 1; i++) {
-      if (array[i] > array[i + 1]) {
-        array = swap(i, array);
-        swapCount++;
-        console.log("swapCount: ", swapCount);
+    console.log(`Pass ${passCount}`);
+    if (swapped) {
+      swapped = false;
+      passCount++;
+
+      for (let i = 0; i < array.length - 1; i++) {
+        if (array[i] > array[i + 1]) {
+          array = swap(i, array);
+          swapCount++;
+          swapped = true;
+          console.log(`Swap ${swapCount}: ${array}`);
+        }
       }
+    } else {
+      break;
     }
   }
 
